@@ -85,6 +85,7 @@
 
         if ([NSURLSession class]) {
             NSURLSession *session = [self prepareSession];
+            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
             NSURLSessionTask *task = [session
                     uploadTaskWithRequest:request
                                  fromData:jsonData
@@ -94,8 +95,10 @@
                             if (onCompletion) {
                                 onCompletion(data, requestErr == nil, requestErr);
                             }
+                            dispatch_semaphore_signal(semaphore);
                         }];
             [task resume];
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
