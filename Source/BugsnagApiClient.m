@@ -43,23 +43,23 @@
          headers:(NSDictionary *)headers
      synchronous:(BOOL)synchronous
     onCompletion:(RequestCompletion)onCompletion {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.requestOperation != nil) { // cancel the previous request
-            [self.requestOperation cancel];
-        }
-        self.requestOperation = [NSBlockOperation blockOperationWithBlock:^{
-            [self sendData:data
-               withPayload:payload
-                     toURL:url
-                   headers:headers
-              onCompletion:onCompletion];
-        }];
-        
-        NSOperationQueue *queue = synchronous ? [NSOperationQueue mainQueue] : self.sendQueue;
-        [queue cancelAllOperations];
-        [queue addOperation:self.requestOperation];
-    });
+
+    [self.requestOperation cancel];
+
+    void (^block)(void) = ^{
+        [self sendData:data
+           withPayload:payload
+                 toURL:url
+               headers:headers
+          onCompletion:onCompletion];
+    };
+    if (synchronous) {
+        block();
+    } else {
+        self.requestOperation = [NSBlockOperation blockOperationWithBlock:block];
+        [self.sendQueue cancelAllOperations];
+        [self.sendQueue addOperation:self.requestOperation];
+    }
 }
 
 - (void)sendData:(id)data
