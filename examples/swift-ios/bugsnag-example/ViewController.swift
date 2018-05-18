@@ -22,12 +22,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let config = BugsnagConfiguration()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        config.apiKey = "5903a5e5b20f3977aa6da275c78da250"
+        config.notifyURL = URL(string: "http://localhost:8000")
+        Bugsnag.start(with: config)
     }
 
     @IBAction func doCrash(_ sender: AnyObject) {
-        handledError()
+        for _ in 1...6 {
+            DispatchQueue.global(priority: .background).async(execute: {
+                self.config.context = "Fatal crash"
+                fatalError("Whoops!")
+            })
+            let error = NSError(domain: "com.bugsnag", code: 402, userInfo: nil)
+            Bugsnag.notifyError(error, block: { report in
+                report.errorClass = "CustomErrorClass"
+                report.errorMessage = "CustomErrorMesage"
+                report.severity = BSGSeverity.info
+                report.context = "CustomContext"
+                report.metaData.removeAll()
+            })
+        }
     }
 
     func unhandledCrash() {
