@@ -83,16 +83,12 @@ static bool hasRecordedSessions;
  *  @param writer report writer which will receive updated metadata
  */
 void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer, int type) {
-    if (BSG_KSCrashTypeUserReported == type) {
-        bsg_log_err(@"Received handled error");
-    } else {
-        bsg_log_err(@"Received unhandled error");
-    }
+    BOOL userReported = BSG_KSCrashTypeUserReported == type;
 
     if (bsg_g_bugsnag_data.configJSON) {
         writer->addJSONElement(writer, "config", bsg_g_bugsnag_data.configJSON);
     }
-    if (bsg_g_bugsnag_data.metaDataJSON) {
+    if (userReported && bsg_g_bugsnag_data.metaDataJSON) {
         writer->addJSONElement(writer, "metaData",
                                bsg_g_bugsnag_data.metaDataJSON);
     }
@@ -103,14 +99,14 @@ void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer, int type
         writer->addStringElement(writer, "startedAt", (const char *) sessionStartDate);
         writer->addUIntegerElement(writer, "handledCount", handledCount);
 
-        if (!bsg_g_bugsnag_data.handledState) {
+        if (!userReported) {
             writer->addUIntegerElement(writer, "unhandledCount", 1);
         } else {
             writer->addUIntegerElement(writer, "unhandledCount", 0);
         }
     }
 
-    if (bsg_g_bugsnag_data.handledState) {
+    if (userReported && bsg_g_bugsnag_data.handledState) {
         writer->addJSONElement(writer, "handledState",
                                bsg_g_bugsnag_data.handledState);
     }
@@ -118,7 +114,7 @@ void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer, int type
     if (bsg_g_bugsnag_data.stateJSON) {
         writer->addJSONElement(writer, "state", bsg_g_bugsnag_data.stateJSON);
     }
-    if (bsg_g_bugsnag_data.userOverridesJSON) {
+    if (userReported && bsg_g_bugsnag_data.userOverridesJSON) {
         writer->addJSONElement(writer, "overrides",
                                bsg_g_bugsnag_data.userOverridesJSON);
     }
