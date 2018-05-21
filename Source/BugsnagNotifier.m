@@ -34,6 +34,7 @@
 #import "BugsnagSessionTracker.h"
 #import "BugsnagSessionTrackingApiClient.h"
 #import "BSG_RFC3339DateTool.h"
+#import "BSG_KSCrashType.h"
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
@@ -81,7 +82,13 @@ static bool hasRecordedSessions;
  *
  *  @param writer report writer which will receive updated metadata
  */
-void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer) {
+void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer, int type) {
+    if (BSG_KSCrashTypeUserReported == type) {
+        bsg_log_err(@"Received handled error");
+    } else {
+        bsg_log_err(@"Received unhandled error");
+    }
+
     if (bsg_g_bugsnag_data.configJSON) {
         writer->addJSONElement(writer, "config", bsg_g_bugsnag_data.configJSON);
     }
