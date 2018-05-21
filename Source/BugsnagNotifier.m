@@ -85,14 +85,6 @@ static bool hasRecordedSessions;
 void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer, int type) {
     BOOL userReported = BSG_KSCrashTypeUserReported == type;
 
-    if (bsg_g_bugsnag_data.configJSON) {
-        writer->addJSONElement(writer, "config", bsg_g_bugsnag_data.configJSON);
-    }
-    if (userReported && bsg_g_bugsnag_data.metaDataJSON) {
-        writer->addJSONElement(writer, "metaData",
-                               bsg_g_bugsnag_data.metaDataJSON);
-    }
-
     if (hasRecordedSessions) { // a session is available
         // persist session info
         writer->addStringElement(writer, "id", (const char *) sessionId);
@@ -106,18 +98,28 @@ void BSSerializeDataCrashHandler(const BSG_KSCrashReportWriter *writer, int type
         }
     }
 
-    if (userReported && bsg_g_bugsnag_data.handledState) {
-        writer->addJSONElement(writer, "handledState",
-                               bsg_g_bugsnag_data.handledState);
-    }
+    // FIXME update two clauses below
 
+    if (bsg_g_bugsnag_data.configJSON) {
+        writer->addJSONElement(writer, "config", bsg_g_bugsnag_data.configJSON);
+    }
     if (bsg_g_bugsnag_data.stateJSON) {
         writer->addJSONElement(writer, "state", bsg_g_bugsnag_data.stateJSON);
     }
-    if (userReported && bsg_g_bugsnag_data.userOverridesJSON) {
-        writer->addJSONElement(writer, "overrides",
-                               bsg_g_bugsnag_data.userOverridesJSON);
+
+    // write additional user-supplied metadata
+    if (userReported) {
+        if (bsg_g_bugsnag_data.metaDataJSON) {
+            writer->addJSONElement(writer, "metaData", bsg_g_bugsnag_data.metaDataJSON);
+        }
+        if (bsg_g_bugsnag_data.handledState) {
+            writer->addJSONElement(writer, "handledState", bsg_g_bugsnag_data.handledState);
+        }
+        if (bsg_g_bugsnag_data.userOverridesJSON) {
+            writer->addJSONElement(writer, "overrides", bsg_g_bugsnag_data.userOverridesJSON);
+        }
     }
+
     if (bsg_g_bugsnag_data.onCrash) {
         bsg_g_bugsnag_data.onCrash(writer);
     }
