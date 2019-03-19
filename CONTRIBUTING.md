@@ -64,7 +64,7 @@ Or to test on tvOS:
 
     make BUILD_TV=1 appletvsimulator11.2 test
 
-Run the integration tests using `make e2e` (end-to-end)
+Run the integration tests on iOS using `make e2e` (end-to-end) and on macOS using `make e2e_mac`
 
 ## Releasing
 

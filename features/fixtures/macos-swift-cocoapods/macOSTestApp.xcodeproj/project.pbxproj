@@ -1,0 +1,651 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		560C0F65B8EF470F3F2BEBC7 /* Pods_macOSTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D437CD15D228E03CBA980D /* Pods_macOSTestApp.framework */; };
+		8A02267A224125430018F30A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A022679224125430018F30A /* AppDelegate.m */; };
+		8A02267C224125430018F30A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A02267B224125430018F30A /* Assets.xcassets */; };
+		8A02267F224125430018F30A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A02267D224125430018F30A /* MainMenu.xib */; };
+		8A022682224125440018F30A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A022681224125440018F30A /* main.m */; };
+		8A0226CF22412AC10018F30A /* UserDisabledScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02268A22412AC10018F30A /* UserDisabledScenario.swift */; };
+		8A0226D022412AC10018F30A /* AccessNonObjectScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02268C22412AC10018F30A /* AccessNonObjectScenario.m */; };
+		8A0226D122412AC10018F30A /* SwiftCrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02268D22412AC10018F30A /* SwiftCrash.swift */; };
+		8A0226D222412AC10018F30A /* DisabledSessionTrackingScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269022412AC10018F30A /* DisabledSessionTrackingScenario.m */; };
+		8A0226D322412AC10018F30A /* NullPointerScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269122412AC10018F30A /* NullPointerScenario.m */; };
+		8A0226D422412AC10018F30A /* SwiftAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269222412AC10018F30A /* SwiftAssertion.swift */; };
+		8A0226D522412AC10018F30A /* NonExistentMethodScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269422412AC10018F30A /* NonExistentMethodScenario.m */; };
+		8A0226D622412AC10018F30A /* ObjCExceptionScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269622412AC10018F30A /* ObjCExceptionScenario.m */; };
+		8A0226D722412AC10018F30A /* CxxExceptionScenario.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269822412AC10018F30A /* CxxExceptionScenario.mm */; };
+		8A0226D822412AC10018F30A /* BuiltinTrapScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269C22412AC10018F30A /* BuiltinTrapScenario.m */; };
+		8A0226D922412AC10018F30A /* ReadGarbagePointerScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A02269E22412AC10018F30A /* ReadGarbagePointerScenario.m */; };
+		8A0226DA22412AC10018F30A /* CorruptMallocScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A022412AC10018F30A /* CorruptMallocScenario.m */; };
+		8A0226DB22412AC10018F30A /* AutoSessionScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A122412AC10018F30A /* AutoSessionScenario.m */; };
+		8A0226DC22412AC10018F30A /* ManualSessionWithUserScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A222412AC10018F30A /* ManualSessionWithUserScenario.m */; };
+		8A0226DD22412AC10018F30A /* HandledErrorOverrideScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A422412AC10018F30A /* HandledErrorOverrideScenario.swift */; };
+		8A0226DE22412AC10018F30A /* ResumedSessionScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A522412AC10018F30A /* ResumedSessionScenario.swift */; };
+		8A0226DF22412AC10018F30A /* ReadOnlyPageScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A722412AC10018F30A /* ReadOnlyPageScenario.m */; };
+		8A0226E022412AC10018F30A /* StoppedSessionScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226A822412AC10018F30A /* StoppedSessionScenario.swift */; };
+		8A0226E122412AC10018F30A /* StackOverflowScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226AC22412AC10018F30A /* StackOverflowScenario.m */; };
+		8A0226E222412AC10018F30A /* NSExceptionScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226AD22412AC10018F30A /* NSExceptionScenario.swift */; };
+		8A0226E322412AC10018F30A /* PrivilegedInstructionScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226B022412AC10018F30A /* PrivilegedInstructionScenario.m */; };
+		8A0226E422412AC10018F30A /* Scenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226B122412AC10018F30A /* Scenario.m */; };
+		8A0226E522412AC10018F30A /* AutoSessionHandledEventsScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226B322412AC10018F30A /* AutoSessionHandledEventsScenario.m */; };
+		8A0226E622412AC10018F30A /* UserIdScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226B622412AC10018F30A /* UserIdScenario.swift */; };
+		8A0226E722412AC10018F30A /* UserEnabledScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226B722412AC10018F30A /* UserEnabledScenario.swift */; };
+		8A0226E822412AC10018F30A /* ReleasedObjectScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226B822412AC10018F30A /* ReleasedObjectScenario.m */; };
+		8A0226E922412AC10018F30A /* HandledErrorScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226BA22412AC10018F30A /* HandledErrorScenario.swift */; };
+		8A0226EA22412AC10018F30A /* UndefinedInstructionScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226BC22412AC10018F30A /* UndefinedInstructionScenario.m */; };
+		8A0226EB22412AC10018F30A /* AutoSessionUnhandledScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226BE22412AC10018F30A /* AutoSessionUnhandledScenario.m */; };
+		8A0226EC22412AC10018F30A /* ManualSessionScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226BF22412AC10018F30A /* ManualSessionScenario.m */; };
+		8A0226ED22412AC10018F30A /* AutoSessionMixedEventsScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C022412AC10018F30A /* AutoSessionMixedEventsScenario.m */; };
+		8A0226EE22412AC10018F30A /* AsyncSafeThreadScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C122412AC10018F30A /* AsyncSafeThreadScenario.m */; };
+		8A0226EF22412AC10018F30A /* HandledExceptionScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C222412AC10018F30A /* HandledExceptionScenario.swift */; };
+		8A0226F022412AC10018F30A /* MinimalCrashReportScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C322412AC10018F30A /* MinimalCrashReportScenario.m */; };
+		8A0226F122412AC10018F30A /* AutoSessionWithUserScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C422412AC10018F30A /* AutoSessionWithUserScenario.m */; };
+		8A0226F222412AC10018F30A /* AbortScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C522412AC10018F30A /* AbortScenario.m */; };
+		8A0226F322412AC10018F30A /* UserEmailScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C622412AC10018F30A /* UserEmailScenario.swift */; };
+		8A0226F422412AC10018F30A /* AutoSessionCustomVersionScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226C822412AC10018F30A /* AutoSessionCustomVersionScenario.m */; };
+		8A0226F522412AC10018F30A /* ObjCMsgSendScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226CB22412AC10018F30A /* ObjCMsgSendScenario.m */; };
+		8A0226F622412AC10018F30A /* NewSessionScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226CD22412AC10018F30A /* NewSessionScenario.swift */; };
+		8A0226F722412AC10018F30A /* OverwriteLinkRegisterScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226CE22412AC10018F30A /* OverwriteLinkRegisterScenario.m */; };
+		8A0226FE224156F20018F30A /* ReportingApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226FD224156F20018F30A /* ReportingApplication.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1CDB28BAA5653FEACBE842DA /* Pods-macOSTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOSTestApp.release.xcconfig"; path = "Target Support Files/Pods-macOSTestApp/Pods-macOSTestApp.release.xcconfig"; sourceTree = "<group>"; };
+		6625F77777945B9F8A1FA7C7 /* Pods-macOSTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOSTestApp.debug.xcconfig"; path = "Target Support Files/Pods-macOSTestApp/Pods-macOSTestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8A022675224125430018F30A /* macOSTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOSTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A022678224125430018F30A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8A022679224125430018F30A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8A02267B224125430018F30A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A02267E224125430018F30A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8A022680224125440018F30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A022681224125440018F30A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8A022683224125440018F30A /* macOSTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOSTestApp.entitlements; sourceTree = "<group>"; };
+		8A02268A22412AC10018F30A /* UserDisabledScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDisabledScenario.swift; sourceTree = "<group>"; };
+		8A02268B22412AC10018F30A /* AutoSessionHandledEventsScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSessionHandledEventsScenario.h; sourceTree = "<group>"; };
+		8A02268C22412AC10018F30A /* AccessNonObjectScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessNonObjectScenario.m; sourceTree = "<group>"; };
+		8A02268D22412AC10018F30A /* SwiftCrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCrash.swift; sourceTree = "<group>"; };
+		8A02268E22412AC10018F30A /* Scenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scenario.h; sourceTree = "<group>"; };
+		8A02268F22412AC10018F30A /* PrivilegedInstructionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivilegedInstructionScenario.h; sourceTree = "<group>"; };
+		8A02269022412AC10018F30A /* DisabledSessionTrackingScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabledSessionTrackingScenario.m; sourceTree = "<group>"; };
+		8A02269122412AC10018F30A /* NullPointerScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullPointerScenario.m; sourceTree = "<group>"; };
+		8A02269222412AC10018F30A /* SwiftAssertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAssertion.swift; sourceTree = "<group>"; };
+		8A02269322412AC10018F30A /* StackOverflowScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowScenario.h; sourceTree = "<group>"; };
+		8A02269422412AC10018F30A /* NonExistentMethodScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonExistentMethodScenario.m; sourceTree = "<group>"; };
+		8A02269522412AC10018F30A /* ReleasedObjectScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleasedObjectScenario.h; sourceTree = "<group>"; };
+		8A02269622412AC10018F30A /* ObjCExceptionScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCExceptionScenario.m; sourceTree = "<group>"; };
+		8A02269722412AC10018F30A /* AsyncSafeThreadScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSafeThreadScenario.h; sourceTree = "<group>"; };
+		8A02269822412AC10018F30A /* CxxExceptionScenario.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CxxExceptionScenario.mm; sourceTree = "<group>"; };
+		8A02269922412AC10018F30A /* AutoSessionMixedEventsScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSessionMixedEventsScenario.h; sourceTree = "<group>"; };
+		8A02269A22412AC10018F30A /* ManualSessionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSessionScenario.h; sourceTree = "<group>"; };
+		8A02269B22412AC10018F30A /* AutoSessionUnhandledScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSessionUnhandledScenario.h; sourceTree = "<group>"; };
+		8A02269C22412AC10018F30A /* BuiltinTrapScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltinTrapScenario.m; sourceTree = "<group>"; };
+		8A02269D22412AC10018F30A /* UndefinedInstructionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndefinedInstructionScenario.h; sourceTree = "<group>"; };
+		8A02269E22412AC10018F30A /* ReadGarbagePointerScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadGarbagePointerScenario.m; sourceTree = "<group>"; };
+		8A02269F22412AC10018F30A /* OverwriteLinkRegisterScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverwriteLinkRegisterScenario.h; sourceTree = "<group>"; };
+		8A0226A022412AC10018F30A /* CorruptMallocScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorruptMallocScenario.m; sourceTree = "<group>"; };
+		8A0226A122412AC10018F30A /* AutoSessionScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSessionScenario.m; sourceTree = "<group>"; };
+		8A0226A222412AC10018F30A /* ManualSessionWithUserScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSessionWithUserScenario.m; sourceTree = "<group>"; };
+		8A0226A322412AC10018F30A /* ObjCMsgSendScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCMsgSendScenario.h; sourceTree = "<group>"; };
+		8A0226A422412AC10018F30A /* HandledErrorOverrideScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandledErrorOverrideScenario.swift; sourceTree = "<group>"; };
+		8A0226A522412AC10018F30A /* ResumedSessionScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumedSessionScenario.swift; sourceTree = "<group>"; };
+		8A0226A622412AC10018F30A /* AutoSessionCustomVersionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSessionCustomVersionScenario.h; sourceTree = "<group>"; };
+		8A0226A722412AC10018F30A /* ReadOnlyPageScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadOnlyPageScenario.m; sourceTree = "<group>"; };
+		8A0226A822412AC10018F30A /* StoppedSessionScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoppedSessionScenario.swift; sourceTree = "<group>"; };
+		8A0226A922412AC10018F30A /* AbortScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbortScenario.h; sourceTree = "<group>"; };
+		8A0226AA22412AC10018F30A /* AutoSessionWithUserScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSessionWithUserScenario.h; sourceTree = "<group>"; };
+		8A0226AB22412AC10018F30A /* MinimalCrashReportScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinimalCrashReportScenario.h; sourceTree = "<group>"; };
+		8A0226AC22412AC10018F30A /* StackOverflowScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowScenario.m; sourceTree = "<group>"; };
+		8A0226AD22412AC10018F30A /* NSExceptionScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSExceptionScenario.swift; sourceTree = "<group>"; };
+		8A0226AE22412AC10018F30A /* NullPointerScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullPointerScenario.h; sourceTree = "<group>"; };
+		8A0226AF22412AC10018F30A /* DisabledSessionTrackingScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabledSessionTrackingScenario.h; sourceTree = "<group>"; };
+		8A0226B022412AC10018F30A /* PrivilegedInstructionScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivilegedInstructionScenario.m; sourceTree = "<group>"; };
+		8A0226B122412AC10018F30A /* Scenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scenario.m; sourceTree = "<group>"; };
+		8A0226B222412AC10018F30A /* AccessNonObjectScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessNonObjectScenario.h; sourceTree = "<group>"; };
+		8A0226B322412AC10018F30A /* AutoSessionHandledEventsScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSessionHandledEventsScenario.m; sourceTree = "<group>"; };
+		8A0226B422412AC10018F30A /* ObjCExceptionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCExceptionScenario.h; sourceTree = "<group>"; };
+		8A0226B522412AC10018F30A /* CxxExceptionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CxxExceptionScenario.h; sourceTree = "<group>"; };
+		8A0226B622412AC10018F30A /* UserIdScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserIdScenario.swift; sourceTree = "<group>"; };
+		8A0226B722412AC10018F30A /* UserEnabledScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEnabledScenario.swift; sourceTree = "<group>"; };
+		8A0226B822412AC10018F30A /* ReleasedObjectScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleasedObjectScenario.m; sourceTree = "<group>"; };
+		8A0226B922412AC10018F30A /* NonExistentMethodScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonExistentMethodScenario.h; sourceTree = "<group>"; };
+		8A0226BA22412AC10018F30A /* HandledErrorScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandledErrorScenario.swift; sourceTree = "<group>"; };
+		8A0226BB22412AC10018F30A /* ReadGarbagePointerScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadGarbagePointerScenario.h; sourceTree = "<group>"; };
+		8A0226BC22412AC10018F30A /* UndefinedInstructionScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UndefinedInstructionScenario.m; sourceTree = "<group>"; };
+		8A0226BD22412AC10018F30A /* BuiltinTrapScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltinTrapScenario.h; sourceTree = "<group>"; };
+		8A0226BE22412AC10018F30A /* AutoSessionUnhandledScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSessionUnhandledScenario.m; sourceTree = "<group>"; };
+		8A0226BF22412AC10018F30A /* ManualSessionScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSessionScenario.m; sourceTree = "<group>"; };
+		8A0226C022412AC10018F30A /* AutoSessionMixedEventsScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSessionMixedEventsScenario.m; sourceTree = "<group>"; };
+		8A0226C122412AC10018F30A /* AsyncSafeThreadScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSafeThreadScenario.m; sourceTree = "<group>"; };
+		8A0226C222412AC10018F30A /* HandledExceptionScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandledExceptionScenario.swift; sourceTree = "<group>"; };
+		8A0226C322412AC10018F30A /* MinimalCrashReportScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinimalCrashReportScenario.m; sourceTree = "<group>"; };
+		8A0226C422412AC10018F30A /* AutoSessionWithUserScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSessionWithUserScenario.m; sourceTree = "<group>"; };
+		8A0226C522412AC10018F30A /* AbortScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbortScenario.m; sourceTree = "<group>"; };
+		8A0226C622412AC10018F30A /* UserEmailScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEmailScenario.swift; sourceTree = "<group>"; };
+		8A0226C722412AC10018F30A /* ReadOnlyPageScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadOnlyPageScenario.h; sourceTree = "<group>"; };
+		8A0226C822412AC10018F30A /* AutoSessionCustomVersionScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSessionCustomVersionScenario.m; sourceTree = "<group>"; };
+		8A0226C922412AC10018F30A /* AutoSessionScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSessionScenario.h; sourceTree = "<group>"; };
+		8A0226CA22412AC10018F30A /* ManualSessionWithUserScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualSessionWithUserScenario.h; sourceTree = "<group>"; };
+		8A0226CB22412AC10018F30A /* ObjCMsgSendScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCMsgSendScenario.m; sourceTree = "<group>"; };
+		8A0226CC22412AC10018F30A /* CorruptMallocScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorruptMallocScenario.h; sourceTree = "<group>"; };
+		8A0226CD22412AC10018F30A /* NewSessionScenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionScenario.swift; sourceTree = "<group>"; };
+		8A0226CE22412AC10018F30A /* OverwriteLinkRegisterScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverwriteLinkRegisterScenario.m; sourceTree = "<group>"; };
+		8A0226F822412B030018F30A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		8A0226FC224156F20018F30A /* ReportingApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportingApplication.h; sourceTree = "<group>"; };
+		8A0226FD224156F20018F30A /* ReportingApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportingApplication.m; sourceTree = "<group>"; };
+		90D437CD15D228E03CBA980D /* Pods_macOSTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOSTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A022672224125430018F30A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				560C0F65B8EF470F3F2BEBC7 /* Pods_macOSTestApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		29D2B8813489E8DA13B9C955 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90D437CD15D228E03CBA980D /* Pods_macOSTestApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A02266C224125430018F30A = {
+			isa = PBXGroup;
+			children = (
+				8A022677224125430018F30A /* macOSTestApp */,
+				8A022676224125430018F30A /* Products */,
+				BF031322B5BE7B7648ECB913 /* Pods */,
+				29D2B8813489E8DA13B9C955 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8A022676224125430018F30A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A022675224125430018F30A /* macOSTestApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A022677224125430018F30A /* macOSTestApp */ = {
+			isa = PBXGroup;
+			children = (
+				8A02268922412AC10018F30A /* scenarios */,
+				8A0226FC224156F20018F30A /* ReportingApplication.h */,
+				8A0226FD224156F20018F30A /* ReportingApplication.m */,
+				8A022678224125430018F30A /* AppDelegate.h */,
+				8A022679224125430018F30A /* AppDelegate.m */,
+				8A02267B224125430018F30A /* Assets.xcassets */,
+				8A02267D224125430018F30A /* MainMenu.xib */,
+				8A022680224125440018F30A /* Info.plist */,
+				8A022681224125440018F30A /* main.m */,
+				8A022683224125440018F30A /* macOSTestApp.entitlements */,
+				8A0226F822412B030018F30A /* BridgingHeader.h */,
+			);
+			path = macOSTestApp;
+			sourceTree = "<group>";
+		};
+		8A02268922412AC10018F30A /* scenarios */ = {
+			isa = PBXGroup;
+			children = (
+				8A02268A22412AC10018F30A /* UserDisabledScenario.swift */,
+				8A02268B22412AC10018F30A /* AutoSessionHandledEventsScenario.h */,
+				8A02268C22412AC10018F30A /* AccessNonObjectScenario.m */,
+				8A02268D22412AC10018F30A /* SwiftCrash.swift */,
+				8A02268E22412AC10018F30A /* Scenario.h */,
+				8A02268F22412AC10018F30A /* PrivilegedInstructionScenario.h */,
+				8A02269022412AC10018F30A /* DisabledSessionTrackingScenario.m */,
+				8A02269122412AC10018F30A /* NullPointerScenario.m */,
+				8A02269222412AC10018F30A /* SwiftAssertion.swift */,
+				8A02269322412AC10018F30A /* StackOverflowScenario.h */,
+				8A02269422412AC10018F30A /* NonExistentMethodScenario.m */,
+				8A02269522412AC10018F30A /* ReleasedObjectScenario.h */,
+				8A02269622412AC10018F30A /* ObjCExceptionScenario.m */,
+				8A02269722412AC10018F30A /* AsyncSafeThreadScenario.h */,
+				8A02269822412AC10018F30A /* CxxExceptionScenario.mm */,
+				8A02269922412AC10018F30A /* AutoSessionMixedEventsScenario.h */,
+				8A02269A22412AC10018F30A /* ManualSessionScenario.h */,
+				8A02269B22412AC10018F30A /* AutoSessionUnhandledScenario.h */,
+				8A02269C22412AC10018F30A /* BuiltinTrapScenario.m */,
+				8A02269D22412AC10018F30A /* UndefinedInstructionScenario.h */,
+				8A02269E22412AC10018F30A /* ReadGarbagePointerScenario.m */,
+				8A02269F22412AC10018F30A /* OverwriteLinkRegisterScenario.h */,
+				8A0226A022412AC10018F30A /* CorruptMallocScenario.m */,
+				8A0226A122412AC10018F30A /* AutoSessionScenario.m */,
+				8A0226A222412AC10018F30A /* ManualSessionWithUserScenario.m */,
+				8A0226A322412AC10018F30A /* ObjCMsgSendScenario.h */,
+				8A0226A422412AC10018F30A /* HandledErrorOverrideScenario.swift */,
+				8A0226A522412AC10018F30A /* ResumedSessionScenario.swift */,
+				8A0226A622412AC10018F30A /* AutoSessionCustomVersionScenario.h */,
+				8A0226A722412AC10018F30A /* ReadOnlyPageScenario.m */,
+				8A0226A822412AC10018F30A /* StoppedSessionScenario.swift */,
+				8A0226A922412AC10018F30A /* AbortScenario.h */,
+				8A0226AA22412AC10018F30A /* AutoSessionWithUserScenario.h */,
+				8A0226AB22412AC10018F30A /* MinimalCrashReportScenario.h */,
+				8A0226AC22412AC10018F30A /* StackOverflowScenario.m */,
+				8A0226AD22412AC10018F30A /* NSExceptionScenario.swift */,
+				8A0226AE22412AC10018F30A /* NullPointerScenario.h */,
+				8A0226AF22412AC10018F30A /* DisabledSessionTrackingScenario.h */,
+				8A0226B022412AC10018F30A /* PrivilegedInstructionScenario.m */,
+				8A0226B122412AC10018F30A /* Scenario.m */,
+				8A0226B222412AC10018F30A /* AccessNonObjectScenario.h */,
+				8A0226B322412AC10018F30A /* AutoSessionHandledEventsScenario.m */,
+				8A0226B422412AC10018F30A /* ObjCExceptionScenario.h */,
+				8A0226B522412AC10018F30A /* CxxExceptionScenario.h */,
+				8A0226B622412AC10018F30A /* UserIdScenario.swift */,
+				8A0226B722412AC10018F30A /* UserEnabledScenario.swift */,
+				8A0226B822412AC10018F30A /* ReleasedObjectScenario.m */,
+				8A0226B922412AC10018F30A /* NonExistentMethodScenario.h */,
+				8A0226BA22412AC10018F30A /* HandledErrorScenario.swift */,
+				8A0226BB22412AC10018F30A /* ReadGarbagePointerScenario.h */,
+				8A0226BC22412AC10018F30A /* UndefinedInstructionScenario.m */,
+				8A0226BD22412AC10018F30A /* BuiltinTrapScenario.h */,
+				8A0226BE22412AC10018F30A /* AutoSessionUnhandledScenario.m */,
+				8A0226BF22412AC10018F30A /* ManualSessionScenario.m */,
+				8A0226C022412AC10018F30A /* AutoSessionMixedEventsScenario.m */,
+				8A0226C122412AC10018F30A /* AsyncSafeThreadScenario.m */,
+				8A0226C222412AC10018F30A /* HandledExceptionScenario.swift */,
+				8A0226C322412AC10018F30A /* MinimalCrashReportScenario.m */,
+				8A0226C422412AC10018F30A /* AutoSessionWithUserScenario.m */,
+				8A0226C522412AC10018F30A /* AbortScenario.m */,
+				8A0226C622412AC10018F30A /* UserEmailScenario.swift */,
+				8A0226C722412AC10018F30A /* ReadOnlyPageScenario.h */,
+				8A0226C822412AC10018F30A /* AutoSessionCustomVersionScenario.m */,
+				8A0226C922412AC10018F30A /* AutoSessionScenario.h */,
+				8A0226CA22412AC10018F30A /* ManualSessionWithUserScenario.h */,
+				8A0226CB22412AC10018F30A /* ObjCMsgSendScenario.m */,
+				8A0226CC22412AC10018F30A /* CorruptMallocScenario.h */,
+				8A0226CD22412AC10018F30A /* NewSessionScenario.swift */,
+				8A0226CE22412AC10018F30A /* OverwriteLinkRegisterScenario.m */,
+			);
+			name = scenarios;
+			path = ../../scenarios;
+			sourceTree = "<group>";
+		};
+		BF031322B5BE7B7648ECB913 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6625F77777945B9F8A1FA7C7 /* Pods-macOSTestApp.debug.xcconfig */,
+				1CDB28BAA5653FEACBE842DA /* Pods-macOSTestApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A022674224125430018F30A /* macOSTestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A022686224125440018F30A /* Build configuration list for PBXNativeTarget "macOSTestApp" */;
+			buildPhases = (
+				A0F8C91A32D52603554D2C31 /* [CP] Check Pods Manifest.lock */,
+				8A022671224125430018F30A /* Sources */,
+				8A022672224125430018F30A /* Frameworks */,
+				8A022673224125430018F30A /* Resources */,
+				9998CDC75177A723CBCA9845 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macOSTestApp;
+			productName = macOSTestApp;
+			productReference = 8A022675224125430018F30A /* macOSTestApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A02266D224125430018F30A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Bugsnag Inc";
+				TargetAttributes = {
+					8A022674224125430018F30A = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = "";
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 8A022670224125430018F30A /* Build configuration list for PBXProject "macOSTestApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A02266C224125430018F30A;
+			productRefGroup = 8A022676224125430018F30A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A022674224125430018F30A /* macOSTestApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A022673224125430018F30A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A02267C224125430018F30A /* Assets.xcassets in Resources */,
+				8A02267F224125430018F30A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9998CDC75177A723CBCA9845 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOSTestApp/Pods-macOSTestApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOSTestApp/Pods-macOSTestApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0F8C91A32D52603554D2C31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOSTestApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A022671224125430018F30A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A0226EB22412AC10018F30A /* AutoSessionUnhandledScenario.m in Sources */,
+				8A0226F622412AC10018F30A /* NewSessionScenario.swift in Sources */,
+				8A0226D922412AC10018F30A /* ReadGarbagePointerScenario.m in Sources */,
+				8A0226DD22412AC10018F30A /* HandledErrorOverrideScenario.swift in Sources */,
+				8A0226F522412AC10018F30A /* ObjCMsgSendScenario.m in Sources */,
+				8A0226F422412AC10018F30A /* AutoSessionCustomVersionScenario.m in Sources */,
+				8A0226D522412AC10018F30A /* NonExistentMethodScenario.m in Sources */,
+				8A0226D122412AC10018F30A /* SwiftCrash.swift in Sources */,
+				8A0226E122412AC10018F30A /* StackOverflowScenario.m in Sources */,
+				8A0226F722412AC10018F30A /* OverwriteLinkRegisterScenario.m in Sources */,
+				8A0226DA22412AC10018F30A /* CorruptMallocScenario.m in Sources */,
+				8A0226DF22412AC10018F30A /* ReadOnlyPageScenario.m in Sources */,
+				8A0226EC22412AC10018F30A /* ManualSessionScenario.m in Sources */,
+				8A0226F122412AC10018F30A /* AutoSessionWithUserScenario.m in Sources */,
+				8A0226E622412AC10018F30A /* UserIdScenario.swift in Sources */,
+				8A0226D822412AC10018F30A /* BuiltinTrapScenario.m in Sources */,
+				8A0226F222412AC10018F30A /* AbortScenario.m in Sources */,
+				8A0226EA22412AC10018F30A /* UndefinedInstructionScenario.m in Sources */,
+				8A0226DE22412AC10018F30A /* ResumedSessionScenario.swift in Sources */,
+				8A0226E422412AC10018F30A /* Scenario.m in Sources */,
+				8A0226E522412AC10018F30A /* AutoSessionHandledEventsScenario.m in Sources */,
+				8A0226EE22412AC10018F30A /* AsyncSafeThreadScenario.m in Sources */,
+				8A0226EF22412AC10018F30A /* HandledExceptionScenario.swift in Sources */,
+				8A0226D022412AC10018F30A /* AccessNonObjectScenario.m in Sources */,
+				8A022682224125440018F30A /* main.m in Sources */,
+				8A0226F022412AC10018F30A /* MinimalCrashReportScenario.m in Sources */,
+				8A0226E022412AC10018F30A /* StoppedSessionScenario.swift in Sources */,
+				8A0226D722412AC10018F30A /* CxxExceptionScenario.mm in Sources */,
+				8A0226F322412AC10018F30A /* UserEmailScenario.swift in Sources */,
+				8A0226D222412AC10018F30A /* DisabledSessionTrackingScenario.m in Sources */,
+				8A0226DB22412AC10018F30A /* AutoSessionScenario.m in Sources */,
+				8A0226FE224156F20018F30A /* ReportingApplication.m in Sources */,
+				8A0226D422412AC10018F30A /* SwiftAssertion.swift in Sources */,
+				8A0226DC22412AC10018F30A /* ManualSessionWithUserScenario.m in Sources */,
+				8A0226CF22412AC10018F30A /* UserDisabledScenario.swift in Sources */,
+				8A0226E922412AC10018F30A /* HandledErrorScenario.swift in Sources */,
+				8A0226E222412AC10018F30A /* NSExceptionScenario.swift in Sources */,
+				8A0226D622412AC10018F30A /* ObjCExceptionScenario.m in Sources */,
+				8A0226E822412AC10018F30A /* ReleasedObjectScenario.m in Sources */,
+				8A0226E322412AC10018F30A /* PrivilegedInstructionScenario.m in Sources */,
+				8A0226ED22412AC10018F30A /* AutoSessionMixedEventsScenario.m in Sources */,
+				8A02267A224125430018F30A /* AppDelegate.m in Sources */,
+				8A0226D322412AC10018F30A /* NullPointerScenario.m in Sources */,
+				8A0226E722412AC10018F30A /* UserEnabledScenario.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8A02267D224125430018F30A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A02267E224125430018F30A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A022684224125440018F30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8A022685224125440018F30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8A022687224125440018F30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6625F77777945B9F8A1FA7C7 /* Pods-macOSTestApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 372ZUL2ZB7;
+				INFOPLIST_FILE = macOSTestApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.macOSTestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = macOSTestApp/BridgingHeader.h;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		8A022688224125440018F30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CDB28BAA5653FEACBE842DA /* Pods-macOSTestApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 372ZUL2ZB7;
+				INFOPLIST_FILE = macOSTestApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bugsnag.macOSTestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = macOSTestApp/BridgingHeader.h;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A022670224125430018F30A /* Build configuration list for PBXProject "macOSTestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A022684224125440018F30A /* Debug */,
+				8A022685224125440018F30A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A022686224125440018F30A /* Build configuration list for PBXNativeTarget "macOSTestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A022687224125440018F30A /* Debug */,
+				8A022688224125440018F30A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A02266D224125430018F30A /* Project object */;
+}

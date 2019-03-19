@@ -7,7 +7,7 @@ Scenario: Executing privileged instruction
     Then I should receive a request
     And the request is a valid for the error reporting API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "events" is an array with 1 element
     And the exception "errorClass" equals "EXC_BAD_ACCESS"
     And the "method" of stack frame 0 equals "-[PrivilegedInstructionScenario run]"
@@ -19,7 +19,7 @@ Scenario: Calling __builtin_trap()
     Then I should receive a request
     And the request is a valid for the error reporting API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "events" is an array with 1 element
     And the exception "errorClass" equals "EXC_BAD_INSTRUCTION"
     And the "method" of stack frame 0 equals "-[BuiltinTrapScenario run]"
@@ -31,7 +31,7 @@ Scenario: Calling abort()
     Then I should receive a request
     And the request is a valid for the error reporting API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "events" is an array with 1 element
     And the exception "errorClass" equals "SIGABRT"
     And the "method" of stack frame 0 equals "__pthread_kill"
@@ -55,7 +55,7 @@ Scenario: Calling non-existent method
     Then I should receive a request
     And the request is a valid for the error reporting API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "events" is an array with 1 element
     And the exception "message" starts with "-[NonExistentMethodScenario santaclaus:]: unrecognized selector sent to instance"
     And the exception "errorClass" equals "NSInvalidArgumentException"
@@ -119,7 +119,7 @@ Scenario: Crash inside objc_msgSend()
     Then I should receive a request
     And the request is a valid for the error reporting API
     And the exception "errorClass" equals "EXC_BAD_ACCESS"
-    And the exception "message" equals "Attempted to dereference garbage pointer 0x42."
+    And the exception "message" starts with "Attempted to dereference garbage pointer 0x"
     And the "method" of stack frame 0 equals "objc_msgSend"
 
 Scenario: Attempt to execute an instruction undefined on the current architecture
@@ -142,9 +142,22 @@ Scenario: Send a message to an object whose memory has already been freed
     And the "method" of stack frame 0 equals "objc_msgSend"
     And the "method" of stack frame 1 equals "-[ReleasedObjectScenario run]"
 
-# N.B. this scenario is "imprecise" on CrashProbe due to line number info,
-# which is not tested here as this would require symbolication
 Scenario: Crash within Swift code
+    When I set environment variable "BUGSNAG_API_KEY" to "a35a2a72bd230ac0aa0f52715bbdc6aa"
+    And I crash the app using "SwiftCrash"
+    And I relaunch the app
+    Then I should receive a request
+    And the request is a valid for the error reporting API
+
+Scenario: Assertion failure in Swift code
+    When I set environment variable "BUGSNAG_API_KEY" to "a35a2a72bd230ac0aa0f52715bbdc6aa"
+    And I crash the app using "SwiftAssertion"
+    And I relaunch the app
+    Then I should receive a request
+    And the request is a valid for the error reporting API
+
+@ios
+Scenario: Reading exception message and class from register addresses from Swift crash
     When I set environment variable "BUGSNAG_API_KEY" to "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And I crash the app using "SwiftCrash"
     And I relaunch the app
@@ -153,7 +166,8 @@ Scenario: Crash within Swift code
     And the exception "message" equals "Unexpectedly found nil while unwrapping an Optional value"
     And the exception "errorClass" equals "Fatal error"
 
-Scenario: Assertion failure in Swift code
+@ios
+Scenario: Reading exception message and class from register addresses from Swift assertion failure
     When I set environment variable "BUGSNAG_API_KEY" to "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And I crash the app using "SwiftAssertion"
     And I relaunch the app
@@ -179,7 +193,7 @@ Scenario: Trigger a crash with libsystem_pthread's _pthread_list_lock held
     Then I should receive a request
     And the request is a valid for the error reporting API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "events" is an array with 1 element
     And the exception "message" equals "Attempted to dereference garbage pointer 0x1."
     And the exception "errorClass" equals "EXC_BAD_ACCESS"

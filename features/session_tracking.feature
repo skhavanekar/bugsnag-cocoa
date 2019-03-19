@@ -7,15 +7,15 @@ Scenario: Launching using the default configuration sends a single session
     And the request is a valid for the session tracking API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And the payload includes app and device data
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "sessions" is an array with 1 element
     And the payload field "app.version" equals "1.0.3"
     And the payload field "app.bundleVersion" equals "5"
     And the payload field "app.releaseStage" equals "development"
-    And the payload field "app.type" equals "iOS"
-    And the payload field "device.osVersion" equals "11.2"
-    And the payload field "device.osName" equals "iOS"
-    And the payload field "device.model" equals "iPhone10,4"
+    And the payload field "app.type" equals the running OS name
+    And the payload field "device.osVersion" equals the running OS version
+    And the payload field "device.osName" equals the print-formatted OS name
+    And the payload field "device.model" equals the current device model
 
     And the session "id" is not null
     And the session "startedAt" is not null
@@ -30,15 +30,15 @@ Scenario: Configuring a custom version sends it in a session request
     And the request is a valid for the session tracking API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And the payload includes app and device data
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "sessions" is an array with 1 element
     And the payload field "app.version" equals "2.0.14"
     And the payload field "app.bundleVersion" equals "5"
     And the payload field "app.releaseStage" equals "development"
-    And the payload field "app.type" equals "iOS"
-    And the payload field "device.osVersion" equals "11.2"
-    And the payload field "device.osName" equals "iOS"
-    And the payload field "device.model" equals "iPhone10,4"
+    And the payload field "app.type" equals the running OS name
+    And the payload field "device.osVersion" equals the running OS version
+    And the payload field "device.osName" equals the print-formatted OS name
+    And the payload field "device.model" equals the current device model
 
     And the session "id" is not null
     And the session "startedAt" is not null
@@ -53,7 +53,7 @@ Scenario: Configuring user info sends it with auto-captured sessions
     And the request is a valid for the session tracking API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And the payload includes app and device data
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "sessions" is an array with 1 element
     And the session "id" is not null
     And the session "user.id" equals "123"
@@ -67,7 +67,7 @@ Scenario: Configuring user info sends it with manually captured sessions
     And the request is a valid for the session tracking API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And the payload includes app and device data
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "sessions" is an array with 1 element
     And the session "id" is not null
     And the session "user.id" equals "123"
@@ -81,7 +81,7 @@ Scenario: Disabling auto-capture and calling startSession() manually sends a sin
     And the request is a valid for the session tracking API
     And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
     And the payload includes app and device data
-    And the payload field "notifier.name" equals "iOS Bugsnag Notifier"
+    And the payload notifier name is correct
     And the payload field "sessions" is an array with 1 element
     And the session "id" is not null
     And the session "startedAt" is not null
@@ -130,6 +130,7 @@ Scenario: Encountering an unhandled event during a session
 
 Scenario: Encountering handled and unhandled events during a session
     And I crash the app using "AutoSessionMixedEventsScenario"
+    And I wait for 1 second
     And I relaunch the app
     And I wait for 10 seconds
 

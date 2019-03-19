@@ -8,9 +8,11 @@ matrix:
         - osx_image: xcode7.3
           env: SDK=iphonesimulator9.3
           script: make test
-        - osx_image: xcode8.3
-          env: SDK=macosx10.12 BUILD_OSX=1
-          script: make test
+        - osx_image: xcode10.1
+          env: SDK=macosx10.13 BUILD_OSX=1 MAZE_OS=mac
+          script:
+          - make test
+          - bundle exec maze-runner -c --tags="not @ios"
         - osx_image: xcode8.3
           env: SDK=iphonesimulator10.3
           script: make test

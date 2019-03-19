@@ -91,8 +91,11 @@ clean: ## Clean build artifacts
 test: ## Run unit tests
 	@$(XCODEBUILD) $(BUILD_FLAGS) $(BUILD_ONLY_FLAGS) test $(FORMATTER)
 
-e2e: ## Run integration tests
-	@bundle exec maze-runner
+e2e: ## Run integration tests for iOS
+	@bundle exec bugsnag-maze-runner
+
+e2e_mac: ## Run integration tests for Mac
+	@MAZE_OS=mac bundle exec bugsnag-maze-runner --tags "not @ios"
 
 archive: build/Bugsnag-$(PLATFORM)-$(PRESET_VERSION).zip
 
