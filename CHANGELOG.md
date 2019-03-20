@@ -1,6 +1,17 @@
 Changelog
 =========
 
+## TBD
+
+### Bug fixes
+
+* Use exception stack in `notify()` calls when available rather than a generated
+  stacktrace. If an exception was raised/thrown, then the resulting Bugsnag
+  report from `notify()` will now use the `NSExceptions` instance's call stack
+  addresses to construct the stacktrace, ignoring depth. This fixes an issue
+  where an exception is reported from a different thread or handler than the
+  original call location, resulting in an unhelpful stack trace.
+
 ## 5.19.0 (2019-02-28)
 
 Note for Carthage users: this release updates the Xcode configuration to the settings recommended by Xcode 10.

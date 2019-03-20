@@ -54,6 +54,7 @@
 		8A0226F622412AC10018F30A /* NewSessionScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226CD22412AC10018F30A /* NewSessionScenario.swift */; };
 		8A0226F722412AC10018F30A /* OverwriteLinkRegisterScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226CE22412AC10018F30A /* OverwriteLinkRegisterScenario.m */; };
 		8A0226FE224156F20018F30A /* ReportingApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0226FD224156F20018F30A /* ReportingApplication.m */; };
+		8A32DB7F22423B0C00EDD92F /* NSExceptionShiftScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A32DB7E22423B0C00EDD92F /* NSExceptionShiftScenario.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,8 @@
 		8A0226F822412B030018F30A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		8A0226FC224156F20018F30A /* ReportingApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportingApplication.h; sourceTree = "<group>"; };
 		8A0226FD224156F20018F30A /* ReportingApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportingApplication.m; sourceTree = "<group>"; };
+		8A32DB7D22423B0C00EDD92F /* NSExceptionShiftScenario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSExceptionShiftScenario.h; sourceTree = "<group>"; };
+		8A32DB7E22423B0C00EDD92F /* NSExceptionShiftScenario.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSExceptionShiftScenario.m; sourceTree = "<group>"; };
 		90D437CD15D228E03CBA980D /* Pods_macOSTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOSTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,6 +273,8 @@
 				8A0226CC22412AC10018F30A /* CorruptMallocScenario.h */,
 				8A0226CD22412AC10018F30A /* NewSessionScenario.swift */,
 				8A0226CE22412AC10018F30A /* OverwriteLinkRegisterScenario.m */,
+				8A32DB7D22423B0C00EDD92F /* NSExceptionShiftScenario.h */,
+				8A32DB7E22423B0C00EDD92F /* NSExceptionShiftScenario.m */,
 			);
 			name = scenarios;
 			path = ../../scenarios;
@@ -418,6 +423,7 @@
 				8A0226D122412AC10018F30A /* SwiftCrash.swift in Sources */,
 				8A0226E122412AC10018F30A /* StackOverflowScenario.m in Sources */,
 				8A0226F722412AC10018F30A /* OverwriteLinkRegisterScenario.m in Sources */,
+				8A32DB7F22423B0C00EDD92F /* NSExceptionShiftScenario.m in Sources */,
 				8A0226DA22412AC10018F30A /* CorruptMallocScenario.m in Sources */,
 				8A0226DF22412AC10018F30A /* ReadOnlyPageScenario.m in Sources */,
 				8A0226EC22412AC10018F30A /* ManualSessionScenario.m in Sources */,
