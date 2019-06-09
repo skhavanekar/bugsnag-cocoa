@@ -1,12 +1,35 @@
 import UIKit
 import Bugsnag
 
+func subclasses<T>(of theClass: T) -> [T] {
+    var count: UInt32 = 0, result: [T] = []
+    let allClasses = objc_copyClassList(&count)!
+
+    for n in 0 ..< count {
+        let someClass: AnyClass = allClasses[Int(n)]
+        guard let someSuperClass = class_getSuperclass(someClass), String(describing: someSuperClass) == String(describing: theClass) else { continue }
+        result.append(someClass as! T)
+    }
+
+    return result
+}
+
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        let scenarios = subclasses(of: Scenario.self).map {$0.description().deletingPrefix("iOSTestApp.")}
+//        print(scenarios)
+
         loadTestScenario()
         return true
     }

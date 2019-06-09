@@ -1,0 +1,11 @@
+# .slather.yml
+
+coverage_service: html
+xcodeproj: iOSTestApp.xcodeproj
+configuration: Debug
+workspace: iOSTestApp.xcworkspace
+scheme: AcceptanceTests
+binary_basename: Bugsnag
+input_format: profdata
+ignore:
+  - Pods/*
