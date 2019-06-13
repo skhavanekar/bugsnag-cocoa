@@ -12,7 +12,7 @@ When("I run {string}") do |event_type|
 end
 
 When("I launch the app") do
-  wait_time = 4
+  wait_time = RUNNING_CI ? 6 : 4
   wait_time += 10 if RUNNING_CI && SLOW_CI_TESTS.include?(@scenario_class)
   steps %Q{
     When I run the script "features/scripts/launch_ios_app.sh"
@@ -20,7 +20,7 @@ When("I launch the app") do
   }
 end
 When("I relaunch the app") do
-  wait_time = RUNNING_CI ? 20 : 10
+  wait_time = RUNNING_CI ? 22 : 10
   wait_time += 40 if RUNNING_CI && SLOW_CI_TESTS.include?(@scenario_class)
   steps %Q{
     When I run the script "features/scripts/launch_ios_app.sh"
