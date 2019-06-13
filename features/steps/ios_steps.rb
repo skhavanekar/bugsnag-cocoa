@@ -19,6 +19,12 @@ When("I launch the app") do
     And I wait for #{wait_time} seconds
   }
 end
+When("I wait for a while") do
+  wait_time = RUNNING_CI ? 14 : 4
+  steps %Q{
+    And I wait for #{wait_time} seconds
+  }
+end
 When("I relaunch the app") do
   wait_time = RUNNING_CI ? 22 : 10
   wait_time += 40 if RUNNING_CI && SLOW_CI_TESTS.include?(@scenario_class)

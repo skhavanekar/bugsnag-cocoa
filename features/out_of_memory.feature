@@ -23,14 +23,14 @@ Feature: Reporting out of memory events
     Scenario: The OS kills the application in the background
         When I crash the app using "OOMScenario"
         And I put the app in the background
-        And I wait for 4 seconds
+        And I wait for a while
         And I relaunch the app
         Then I should receive 0 requests
 
     Scenario: The OS kills the application in the background and reportBackgroundOOMs is true
         When I crash the app using "ReportBackgroundOOMsEnabledScenario"
         And I put the app in the background
-        And I wait for 4 seconds
+        And I wait for a while
         And I relaunch the app
         Then I should receive a request
         And the request is a valid for the error reporting API
