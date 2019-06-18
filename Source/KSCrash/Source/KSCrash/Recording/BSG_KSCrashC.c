@@ -30,14 +30,13 @@
 #include "BSG_KSCrashSentry_Deadlock.h"
 #include "BSG_KSCrashSentry_User.h"
 #include "BSG_KSMach.h"
-#include "BSG_KSObjC.h"
 #include "BSG_KSString.h"
 #include "BSG_KSSystemInfoC.h"
-#include "BSG_KSZombie.h"
 
 //#define BSG_KSLogger_LocalLevel TRACE
 #include "BSG_KSLogger.h"
-
+#include <objc/NSObjCRuntime.h>
+#include <CoreFoundation/CoreFoundation.h>
 #include <mach/mach_time.h>
 
 // ============================================================================
@@ -161,10 +160,6 @@ BSG_KSCrashType bsg_kscrash_install(const char *const crashReportFilePath,
 
     bsg_ksmach_init();
 
-    if (context->config.introspectionRules.enabled) {
-        bsg_ksobjc_init();
-    }
-
     bsg_kscrash_reinstall(crashReportFilePath, recrashReportFilePath,
                           stateFilePath, crashID);
 
@@ -239,10 +234,6 @@ void bsg_kscrash_setSearchQueueNames(bool shouldSearchQueueNames) {
 
 void bsg_kscrash_setIntrospectMemory(bool introspectMemory) {
     crashContext()->config.introspectionRules.enabled = introspectMemory;
-}
-
-void bsg_kscrash_setCatchZombies(bool catchZombies) {
-    bsg_kszombie_setEnabled(catchZombies);
 }
 
 void bsg_kscrash_setDoNotIntrospectClasses(const char **doNotIntrospectClasses,
