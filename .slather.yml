@@ -1,0 +1,7 @@
+workspace: iOS.xcworkspace
+xcodeproj: iOS/Bugsnag.xcodeproj
+scheme: Bugsnag
+input_format: profdata
+binary_basename: Bugsnag
+coverage_service: html
+configuration: Debug
