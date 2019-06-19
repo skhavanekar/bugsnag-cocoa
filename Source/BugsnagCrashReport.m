@@ -178,13 +178,6 @@ static NSString *const DEFAULT_EXCEPTION_TYPE = @"cocoa";
 - (NSDictionary *)BSG_mergedInto:(NSDictionary *)dest;
 @end
 
-@interface RegisterErrorData : NSObject
-@property (nonatomic, strong) NSString *errorClass;
-@property (nonatomic, strong) NSString *errorMessage;
-+ (instancetype)errorDataFromThreads:(NSArray *)threads;
-- (instancetype)initWithClass:(NSString *_Nonnull)errorClass message:(NSString *_Nonnull)errorMessage NS_DESIGNATED_INITIALIZER;
-@end
-
 @interface FallbackReportData : NSObject
 @property (nonatomic, strong) NSString *errorClass;
 @property (nonatomic, getter=isUnhandled) BOOL unhandled;
@@ -258,14 +251,8 @@ static NSString *const DEFAULT_EXCEPTION_TYPE = @"cocoa";
             _releaseStage = BSGParseReleaseStage(report);
             _incomplete = report.count == 0;
             _threads = [report valueForKeyPath:@"crash.threads"];
-            RegisterErrorData *data = [RegisterErrorData errorDataFromThreads:_threads];
-            if (data) {
-                _errorClass = data.errorClass ?: fallback.errorClass;
-                _errorMessage = data.errorMessage;
-            } else {
-                _errorClass = BSGParseErrorClass(_error, _errorType, fallback.errorClass);
-                _errorMessage = BSGParseErrorMessage(report, _error, _errorType);
-            }
+            _errorClass = BSGParseErrorClass(_error, _errorType, fallback.errorClass);
+            _errorMessage = BSGParseErrorMessage(report, _error, _errorType);
             _binaryImages = report[@"binary_images"];
             _breadcrumbs = BSGParseBreadcrumbs(report);
             _dsymUUID = [report valueForKeyPath:@"system.app_uuid"];
@@ -697,77 +684,4 @@ initWithErrorName:(NSString *_Nonnull)name
     return self;
 }
 
-@end
-
-@implementation RegisterErrorData
-+ (instancetype)errorDataFromThreads:(NSArray *)threads {
-    for (NSDictionary *thread in threads) {
-        if (![thread[@"crashed"] boolValue]) {
-            continue;
-        }
-        NSDictionary *notableAddresses = thread[@"notable_addresses"];
-        NSMutableArray *interestingValues = [NSMutableArray new];
-        NSString *reservedWord = nil;
-
-        for (NSString *key in notableAddresses) {
-            if ([key hasPrefix:@"stack"]) { // skip stack frames, only use register values
-                continue;
-            }
-            NSDictionary *data = notableAddresses[key];
-            if (![@"string" isEqualToString:data[BSGKeyType]]) {
-                continue;
-            }
-            NSString *contentValue = data[@"value"];
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCDFAInspection"
-            if (contentValue == nil || ![contentValue isKindOfClass:[NSString class]]) {
-                continue;
-            }
-#pragma clang diagnostic pop
-
-            if ([self isReservedWord:contentValue]) {
-                reservedWord = contentValue;
-            } else if ([[contentValue componentsSeparatedByString:@"/"] count] <= 2) {
-                // must be a string that isn't a reserved word and isn't a filepath
-                [interestingValues addObject:contentValue];
-            }
-        }
-
-        [interestingValues sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-
-        NSString *message = [interestingValues componentsJoinedByString:@" | "];
-        return [[RegisterErrorData alloc] initWithClass:reservedWord
-                                                message:message];
-    }
-    return nil;
-}
-
-/**
- * Determines whether a string is a "reserved word" that identifies it as a known value.
- *
- * For fatalError, preconditionFailure, and assertionFailure, "fatal error" will be in one of the registers.
- *
- * For assert, "assertion failed" will be in one of the registers.
- */
-+ (BOOL)isReservedWord:(NSString *)contentValue {
-    return [@"assertion failed" caseInsensitiveCompare:contentValue] == NSOrderedSame
-    || [@"fatal error" caseInsensitiveCompare:contentValue] == NSOrderedSame
-    || [@"precondition failed" caseInsensitiveCompare:contentValue] == NSOrderedSame;
-}
-
-- (instancetype)init {
-    return [self initWithClass:@"Unknown" message:@"<unset>"];
-}
-
-- (instancetype)initWithClass:(NSString *)errorClass message:(NSString *)errorMessage {
-    if (errorClass.length == 0) {
-        return nil;
-    }
-    if (self = [super init]) {
-        _errorClass = errorClass;
-        _errorMessage = errorMessage;
-    }
-    return self;
-}
 @end
