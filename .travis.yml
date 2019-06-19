@@ -5,12 +5,15 @@ cache:
 rvm: 2.4.3
 matrix:
     include:
-        - osx_image: xcode9.4
+        - osx_image: xcode10.2
           env: PLATFORM=iOS
           script:
             - make test
-            - make test OS=10.3.1
+            - make test OS=8.4
             - make test OS=9.3
+            - make test OS=10.3.1
+            - make test OS=11.4
+            - make test OS=12.1
         - osx_image: xcode9.4
           env: PLATFORM=OSX
           script:
