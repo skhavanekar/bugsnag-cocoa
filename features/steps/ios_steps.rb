@@ -1,5 +1,3 @@
-SLOW_CI_TESTS = ['PrivilegedInstructionScenario', 'BuiltinTrapScenario', 'MinimalCrashReportScenario', 'NullPointerScenario']
-
 When("I run {string}") do |event_type|
   @scenario_class = event_type
   wait_time = '4'
@@ -13,7 +11,7 @@ end
 
 When("I launch the app") do
   wait_time = 4
-  wait_time += 10 if RUNNING_CI && SLOW_CI_TESTS.include?(@scenario_class)
+  wait_time += 60 if RUNNING_CI
   steps %Q{
     When I run the script "features/scripts/launch_ios_app.sh"
     And I wait for #{wait_time} seconds
@@ -21,7 +19,7 @@ When("I launch the app") do
 end
 When("I relaunch the app") do
   wait_time = RUNNING_CI ? 20 : 10
-  wait_time += 40 if RUNNING_CI && SLOW_CI_TESTS.include?(@scenario_class)
+  wait_time += 60 if RUNNING_CI
   steps %Q{
     When I run the script "features/scripts/launch_ios_app.sh"
     And I wait for #{wait_time} seconds
