@@ -105,16 +105,32 @@ extern "C" {
 #pragma mark - objc4-680/runtime/objc-internal.h -
 // ======================================================================
 
-enum {
-    OBJC_TAG_NSAtom = 0,
-    OBJC_TAG_1 = 1,
-    OBJC_TAG_NSString = 2,
-    OBJC_TAG_NSNumber = 3,
-    OBJC_TAG_NSIndexPath = 4,
-    OBJC_TAG_NSManagedObjectID = 5,
-    OBJC_TAG_NSDate = 6,
-    OBJC_TAG_7 = 7
-};
+#if __has_feature(objc_fixed_enum)  ||  __cplusplus >= 201103L
+    enum objc_tag_index_t : uint16_t
+#else
+    typedef uint16_t objc_tag_index_t;
+    enum
+#endif
+    {
+        OBJC_TAG_NSAtom            = 0,
+        OBJC_TAG_1                 = 1,
+        OBJC_TAG_NSString          = 2,
+        OBJC_TAG_NSNumber          = 3,
+        OBJC_TAG_NSIndexPath       = 4,
+        OBJC_TAG_NSManagedObjectID = 5,
+        OBJC_TAG_NSDate            = 6,
+        OBJC_TAG_RESERVED_7        = 7,
+        
+        OBJC_TAG_First60BitPayload = 0,
+        OBJC_TAG_Last60BitPayload  = 6,
+        OBJC_TAG_First52BitPayload = 8,
+        OBJC_TAG_Last52BitPayload  = 263,
+        
+        OBJC_TAG_RESERVED_264      = 264
+    };
+#if __has_feature(objc_fixed_enum)  &&  !defined(__cplusplus)
+    typedef enum objc_tag_index_t objc_tag_index_t;
+#endif
 
 // ======================================================================
 #pragma mark - objc4-680/runtime/objc-os.h -

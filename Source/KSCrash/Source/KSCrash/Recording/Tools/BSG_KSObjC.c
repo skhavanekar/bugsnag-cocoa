@@ -179,14 +179,77 @@ static const char *bsg_g_blockBaseClassName = "NSBlock";
 //======================================================================
 
 #if SUPPORT_TAGGED_POINTERS
+
+#define _OBJC_TAG_INDEX_MASK 0x7
+// array slot includes the tag bit itself
+#define _OBJC_TAG_SLOT_COUNT 16
+#define _OBJC_TAG_SLOT_MASK 0xf
+
+#define _OBJC_TAG_EXT_INDEX_MASK 0xff
+// array slot has no extra bits
+#define _OBJC_TAG_EXT_SLOT_COUNT 256
+#define _OBJC_TAG_EXT_SLOT_MASK 0xff
+
+#   define _OBJC_TAG_MASK (1ULL<<63)
+#   define _OBJC_TAG_INDEX_SHIFT 60
+#   define _OBJC_TAG_SLOT_SHIFT 60
+#   define _OBJC_TAG_PAYLOAD_LSHIFT 4
+#   define _OBJC_TAG_PAYLOAD_RSHIFT 4
+#   define _OBJC_TAG_EXT_MASK (0xfULL<<60)
+#   define _OBJC_TAG_EXT_INDEX_SHIFT 52
+#   define _OBJC_TAG_EXT_SLOT_SHIFT 52
+#   define _OBJC_TAG_EXT_PAYLOAD_LSHIFT 12
+#   define _OBJC_TAG_EXT_PAYLOAD_RSHIFT 12
+
+static inline bool
+_objc_isTaggedPointer(const void *ptr)
+{
+    return ((intptr_t)ptr & _OBJC_TAG_MASK) == _OBJC_TAG_MASK;
+}
 bool bsg_isTaggedPointer(const void *pointer) {
-    return (((uintptr_t)pointer) & TAG_MASK) != 0;
+    return _objc_isTaggedPointer(pointer);
+//    return (((uintptr_t)pointer) & TAG_MASK) != 0;
+}
+static inline bool
+_objc_taggedPointersEnabled(void)
+{
+    extern uintptr_t objc_debug_taggedpointer_mask;
+    return (objc_debug_taggedpointer_mask != 0);
+}
+static inline objc_tag_index_t
+_objc_getTaggedPointerTag(const void *ptr)
+{
+    if (!_objc_taggedPointersEnabled()) {
+        return 0;
+    }
+    // assert(_objc_isTaggedPointer(ptr));
+    uintptr_t basicTag = ((uintptr_t)ptr >> _OBJC_TAG_INDEX_SHIFT) & _OBJC_TAG_INDEX_MASK;
+    uintptr_t extTag =   ((uintptr_t)ptr >> _OBJC_TAG_EXT_INDEX_SHIFT) & _OBJC_TAG_EXT_INDEX_MASK;
+    if (basicTag == _OBJC_TAG_INDEX_MASK) {
+        return (objc_tag_index_t)(extTag + OBJC_TAG_First52BitPayload);
+    } else {
+        return (objc_tag_index_t)basicTag;
+    }
 }
 uintptr_t bsg_getTaggedSlot(const void *pointer) {
-    return (((uintptr_t)pointer) >> TAG_SLOT_SHIFT) & TAG_SLOT_MASK;
+    return _objc_getTaggedPointerTag(pointer);
+//    return (((uintptr_t)pointer) >> TAG_SLOT_SHIFT) & TAG_SLOT_MASK;
+}
+
+static inline uintptr_t
+_objc_getTaggedPointerValue(const void *ptr)
+{
+    // assert(_objc_isTaggedPointer(ptr));
+    uintptr_t basicTag = ((uintptr_t)ptr >> _OBJC_TAG_INDEX_SHIFT) & _OBJC_TAG_INDEX_MASK;
+    if (basicTag == _OBJC_TAG_INDEX_MASK) {
+        return ((uintptr_t)ptr << _OBJC_TAG_EXT_PAYLOAD_LSHIFT) >> _OBJC_TAG_EXT_PAYLOAD_RSHIFT;
+    } else {
+        return ((uintptr_t)ptr << _OBJC_TAG_PAYLOAD_LSHIFT) >> _OBJC_TAG_PAYLOAD_RSHIFT;
+    }
 }
 uintptr_t bsg_getTaggedPayload(const void *pointer) {
-    return (((uintptr_t)pointer) << TAG_PAYLOAD_LSHIFT) >> TAG_PAYLOAD_RSHIFT;
+    return _objc_getTaggedPointerValue(pointer);
+//    return (((uintptr_t)pointer) << TAG_PAYLOAD_LSHIFT) >> TAG_PAYLOAD_RSHIFT;
 }
 #else
 bool bsg_isTaggedPointer(__unused const void *pointer) { return false; }
@@ -292,12 +355,42 @@ static bool bsg_isTaggedPointerNSNumber(const void *const object) {
     return bsg_getTaggedSlot(object) == OBJC_TAG_NSNumber;
 }
 
+#include <dlfcn.h>
+
+static Class _objc_getClassForTag(objc_tag_index_t tag)
+{
+    static bool _objc_getClassForTag_searched = false;
+    static Class (*_objc_getClassForTag_func)(objc_tag_index_t) = NULL;
+    if(!_objc_getClassForTag_searched)
+    {
+        _objc_getClassForTag_func = (Class(*)(objc_tag_index_t))dlsym(RTLD_DEFAULT, "_objc_getClassForTag");
+        _objc_getClassForTag_searched = true;
+        if(_objc_getClassForTag_func == NULL)
+        {
+            fprintf(stderr, "*** Could not find _objc_getClassForTag()!\n");
+        }
+    }
+    
+    if(_objc_getClassForTag_func != NULL)
+    {
+        return _objc_getClassForTag_func(tag);
+    }
+    
+    return NULL;
+}
+
 /** Check if a tagged pointer is a string.
  *
  * @param object The object to query.
  * @return true if the tagged pointer is an NSString.
  */
 static bool bsg_isTaggedPointerNSString(const void *const object) {
+    objc_tag_index_t tag = _objc_getTaggedPointerTag(object);
+    Class objClass = _objc_getClassForTag(tag);
+//    Class stringClass = [NSString class];
+    if (objClass == NULL) {
+        return TRUE;
+    }
     return bsg_getTaggedSlot(object) == OBJC_TAG_NSString;
 }
 
