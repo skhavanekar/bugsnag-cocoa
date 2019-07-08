@@ -7,11 +7,15 @@ matrix:
         - osx_image: xcode10.2
           env: PLATFORM=iOS
           script:
+            - make test OS=12.2
             - make test OS=11.4
             - make test OS=10.3.1
-            - make test OS=9.3
           after_success:
             - bash <(curl -s 'https://codecov.io/bash') -Z -J '^Bugsnag$' -X gcov -X coveragepy -X fix -D build
+        - osx_image: xcode8.0
+          env: PLATFORM=iOS
+          script:
+            - make test OS=9.3
         - osx_image: xcode9.4
           env: PLATFORM=OSX
           script:
@@ -19,9 +23,13 @@ matrix:
         - osx_image: xcode10.2
           env: PLATFORM=tvOS
           script:
+            - make test OS=12.2
             - make test OS=11.4
             - make test OS=10.2
             - make test OS=9.2
+        - osx_image: xcode10.2
+          script: bundle exec maze-runner -c || (cat maze_output/* && exit 1)
+          env: MAZE_SDK=12.2 SDK=iphonesimulator12.2 RUBYSHELL=/bin/bash
         - osx_image: xcode10.1
           script: bundle exec maze-runner -c || (cat maze_output/* && exit 1)
           env: MAZE_SDK=12.1 SDK=iphonesimulator12.1 RUBYSHELL=/bin/bash

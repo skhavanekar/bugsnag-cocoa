@@ -10,6 +10,8 @@ Then("The exception reflects malloc corruption occurred") do
   assert_true(stacktrace.length > 0, "The stacktrace must have more than 0 elements")
 
   case MAZE_SDK
+  when "12.2"
+    assert_exception_matches_12_2(exception, stacktrace)
   when "12.1"
     assert_exception_matches_12_1(exception, stacktrace)
   when "11.2"
@@ -19,6 +21,20 @@ Then("The exception reflects malloc corruption occurred") do
   end
 end
 
+def assert_exception_matches_12_2(exception, stacktrace)
+  case stacktrace.first["method"]
+  when "__pthread_kill"
+    assert_equal("SIGABRT", exception["errorClass"])
+    assert_equal("abort", stacktrace[1]["method"])
+  when "nanov2_allocate_from_block"
+    assert_equal("EXC_BAD_INSTRUCTION", exception["errorClass"])
+    assert_equal("nanov2_allocate", stacktrace[1]["method"])
+    assert_equal("NSLog", stacktrace[16]["method"])
+    assert_equal("-[CorruptMallocScenario run]", stacktrace[17]["method"])
+  else
+    fail("The exception does not reflect malloc corruption")
+  end
+end
 def assert_exception_matches_12_1(exception, stacktrace)
   case stacktrace.first["method"]
   when "__pthread_kill"
