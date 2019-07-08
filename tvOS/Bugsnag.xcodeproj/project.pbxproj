@@ -165,7 +165,6 @@
 		E7CE78F71FD94F1B001D07E0 /* KSCrashSentry_Signal_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78DD1FD94F18001D07E0 /* KSCrashSentry_Signal_Tests.m */; };
 		E7CE78F81FD94F1B001D07E0 /* KSCrashSentry_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78DE1FD94F18001D07E0 /* KSCrashSentry_Tests.m */; };
 		E7CE78F91FD94F1B001D07E0 /* KSSystemInfo_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78DF1FD94F18001D07E0 /* KSSystemInfo_Tests.m */; };
-		E7CE78FA1FD94F1B001D07E0 /* KSZombie_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78E01FD94F18001D07E0 /* KSZombie_Tests.m */; };
 		E7CE78FC1FD94F1B001D07E0 /* KSCrashSentry_NSException_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78E21FD94F18001D07E0 /* KSCrashSentry_NSException_Tests.m */; };
 		E7CE78FD1FD94F1B001D07E0 /* KSString_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78E31FD94F19001D07E0 /* KSString_Tests.m */; };
 		E7CE78FE1FD94F1B001D07E0 /* KSSignalInfo_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CE78E51FD94F19001D07E0 /* KSSignalInfo_Tests.m */; };
@@ -355,7 +354,6 @@
 		E7CE78DD1FD94F18001D07E0 /* KSCrashSentry_Signal_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCrashSentry_Signal_Tests.m; sourceTree = "<group>"; };
 		E7CE78DE1FD94F18001D07E0 /* KSCrashSentry_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCrashSentry_Tests.m; sourceTree = "<group>"; };
 		E7CE78DF1FD94F18001D07E0 /* KSSystemInfo_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSystemInfo_Tests.m; sourceTree = "<group>"; };
-		E7CE78E01FD94F18001D07E0 /* KSZombie_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSZombie_Tests.m; sourceTree = "<group>"; };
 		E7CE78E21FD94F18001D07E0 /* KSCrashSentry_NSException_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCrashSentry_NSException_Tests.m; sourceTree = "<group>"; };
 		E7CE78E31FD94F19001D07E0 /* KSString_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSString_Tests.m; sourceTree = "<group>"; };
 		E7CE78E41FD94F19001D07E0 /* FileBasedTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileBasedTestCase.h; sourceTree = "<group>"; };
@@ -689,7 +687,6 @@
 				E7CE78E31FD94F19001D07E0 /* KSString_Tests.m */,
 				E7CE78EE1FD94F1A001D07E0 /* KSSysCtl_Tests.m */,
 				E7CE78DF1FD94F18001D07E0 /* KSSystemInfo_Tests.m */,
-				E7CE78E01FD94F18001D07E0 /* KSZombie_Tests.m */,
 				E7CE78D91FD94F18001D07E0 /* NSError+SimpleConstructor_Tests.m */,
 				E7CE78E91FD94F19001D07E0 /* RFC3339DateTool_Tests.m */,
 				E7CE78F01FD94F1A001D07E0 /* XCTestCase+KSCrash.h */,
@@ -964,7 +961,6 @@
 				E79148901FD82E77003EFEBF /* BugsnagSessionTest.m in Sources */,
 				8AB151211D41361700C9B218 /* BugsnagBreadcrumbsTest.m in Sources */,
 				E7CE78F81FD94F1B001D07E0 /* KSCrashSentry_Tests.m in Sources */,
-				E7CE78FA1FD94F1B001D07E0 /* KSZombie_Tests.m in Sources */,
 				E7CE78F51FD94F1B001D07E0 /* XCTestCase+KSCrash.m in Sources */,
 				E7CE79091FD94F1B001D07E0 /* KSCrashState_Tests.m in Sources */,
 				E7CE78FF1FD94F1B001D07E0 /* KSCrashReportStore_Tests.m in Sources */,
