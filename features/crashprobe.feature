@@ -133,23 +133,19 @@ Scenario: Send a message to an object whose memory has already been freed
     And the "method" of stack frame 0 equals "objc_msgSend"
     And the "method" of stack frame 1 equals "-[ReleasedObjectScenario run]"
 
-# N.B. this scenario is "imprecise" on CrashProbe due to line number info,
-# which is not tested here as this would require symbolication
 Scenario: Crash within Swift code
     When I crash the app using "SwiftCrash"
     And I relaunch the app
     And I wait for a request
     Then the request is valid for the error reporting API
-    And the exception "message" contains "Unexpectedly found nil while unwrapping an Optional value"
-    And the exception "errorClass" equals "Fatal error"
+    And the exception is a Swift fatal error with message "Unexpectedly found nil while unwrapping an Optional value"
 
 Scenario: Assertion failure in Swift code
     When I crash the app using "SwiftAssertion"
     And I relaunch the app
     And I wait for a request
     Then the request is valid for the error reporting API
-    And the exception "errorClass" equals "Fatal error"
-    And the exception "message" contains "several unfortunate things just happened"
+    And the exception is a Swift fatal error with message "several unfortunate things just happened"
 
 Scenario: Dereference a null pointer
     When I crash the app using "NullPointerScenario"

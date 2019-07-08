@@ -27,6 +27,16 @@
 #ifndef HDR_BSG_KSObjC_h
 #define HDR_BSG_KSObjC_h
 
+// Enable memory introspection (used for discovering the error messages from
+// Swift assertion failures) only when building on macOS 10.13 and older, as
+// newer versions of the build system do not support this feature and it will
+// be supported through other means in the future.
+#ifdef __apple_build_version__
+#  if __apple_build_version__ < 10001140
+#    define BSG_INTROSPECT_MEMORY
+#  endif
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

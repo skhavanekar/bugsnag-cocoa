@@ -112,7 +112,7 @@ end
 
 Then("the {string} of stack frame {int} demangles to {string}") do |field, frame_index, expected_value|
   value = read_key_path(find_request(0)[:body], "events.0.exceptions.0.stacktrace.#{frame_index}.#{field}")
-  demangled_value = `xcrun swift-demangle -compact '#{value}'`.chomp
+  demangled_value = `xcrun swift-demangle -compact '#{value}'`.sub('@objc ', '').chomp
   assert_equal(expected_value, demangled_value)
 end
 
@@ -131,4 +131,13 @@ Then("the stacktrace contains methods:") do |table|
   actual = stack_trace.map{|s| s["method"]}
   contains = actual.each_cons(expected.length).to_a.include? expected
   assert_true(contains, "Stacktrace methods #{actual} did not contain #{expected}")
+end
+
+Then("the exception is a Swift fatal error with message {string}") do |message|
+  step('the exception "errorClass" equals "Fatal error"')
+  # Swift assertion message contents is discovered through crash time memory introspection,
+  # only available on iOS 12.1 and below
+  if XCODE_VERSION <= '10.1'
+    step("the exception \"message\" contains \"#{message}\"")
+  end
 end

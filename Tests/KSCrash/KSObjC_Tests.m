@@ -30,6 +30,7 @@
 
 #import "BSG_KSObjC.h"
 
+#ifdef BSG_INTROSPECT_MEMORY
 
 @interface SomeObjCClass: NSObject
 {
@@ -1032,3 +1033,4 @@ static NSArray* g_test_strings;
 //}
 
 @end
+#endif // BSG_INTROSPECT_MEMORY

@@ -23,7 +23,9 @@ NSUInteger const BSG_MAX_STORED_REPORTS = 12;
 
     BugsnagSink *sink = [[BugsnagSink alloc] initWithApiClient:apiClient];
     [BSG_KSCrash sharedInstance].sink = sink;
+#ifdef BSG_INTROSPECT_MEMORY
     [BSG_KSCrash sharedInstance].introspectMemory = YES;
+#endif
     [BSG_KSCrash sharedInstance].deleteBehaviorAfterSendAll =
         BSG_KSCDeleteOnSucess;
     [BSG_KSCrash sharedInstance].onCrash = onCrash;

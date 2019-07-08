@@ -10,6 +10,7 @@ MAX_WAIT_TIME = RUNNING_CI ? 300 : 60
 
 ENV['MAZE_SDK'] = '12.1' unless ENV['MAZE_SDK']
 MAZE_SDK = ENV['MAZE_SDK']
+XCODE_VERSION=`xcodebuild -version | awk 'NR == 1{print $2;}'`.chomp
 
 Dir.chdir('features/fixtures/ios-swift-cocoapods') do
   run_required_commands([
