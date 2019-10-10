@@ -34,6 +34,6 @@
  *                  user cancelling the operation).
  * @param error Non-nil if an error occurred.
  */
-typedef void (^BSG_KSCrashReportFilterCompletion)(NSUInteger sentReportCount,
+typedef void (^BSG_KSCrashReportFilterCompletion)(NSString *filename,
                                                   BOOL completed,
                                                   NSError *error);
